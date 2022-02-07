@@ -1,4 +1,3 @@
-// Write your code here
 import './index.css'
 
 const registrationStatus = {
@@ -8,7 +7,7 @@ const registrationStatus = {
 }
 
 const ActiveEventRegistrationDetails = props => {
-  const {filterDetails} = props
+  const {activeEventRegistrationStatus} = props
 
   const renderNoActiveEventView = () => (
     <p className="no-active-event-description">
@@ -64,7 +63,7 @@ const ActiveEventRegistrationDetails = props => {
   )
 
   const renderActiveEventRegistrationDetails = () => {
-    switch (filterDetails.registrationStatus) {
+    switch (activeEventRegistrationStatus) {
       case registrationStatus.yetToRegister:
         return renderYetToRegisterView()
       case registrationStatus.registered:

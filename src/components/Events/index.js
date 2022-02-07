@@ -55,17 +55,27 @@ const eventsList = [
 // Write your code here
 
 class Events extends Component {
-  state = {filterdList: []}
+  state = {
+    activeEventId: '',
+  }
+
+  getActiveEventRegistrationStatus = () => {
+    const {activeEventId} = this.state
+    const activeEventDetails = eventsList.find(
+      event => event.id === activeEventId,
+    )
+    if (activeEventDetails) {
+      return activeEventDetails.registrationStatus
+    }
+    return ''
+  }
 
   clickImage = id => {
-    const filterList = eventsList.filter(eachItem => eachItem.id === id)
-
-    this.setState({filterdList: filterList})
+    this.setState({activeEventId: id})
   }
 
   render() {
-    const {filterdList} = this.state
-    console.log(filterdList)
+    const {activeEventId} = this.state
     return (
       <div className="bg-container">
         <div className="events-container">
@@ -76,17 +86,15 @@ class Events extends Component {
                 eventDetails={eachItem}
                 key={eachItem.id}
                 clickImage={this.clickImage}
+                isActive={eachItem.id === activeEventId}
               />
             ))}
           </ul>
         </div>
         <div className="registrationStatus-container">
-          {filterdList.map(eachItem => (
-            <ActiveEventRegistrationDetails
-              filterDetails={eachItem}
-              key={eachItem.id}
-            />
-          ))}
+          <ActiveEventRegistrationDetails
+            activeEventRegistrationStatus={this.getActiveEventRegistrationStatus()}
+          />
         </div>
       </div>
     )
