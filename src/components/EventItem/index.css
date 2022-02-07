@@ -1,0 +1,36 @@
+/* Write your CSS here */
+.list-item {
+  list-style-type: none;
+  width: 50%;
+}
+
+.list-image {
+  width: 90%;
+}
+
+.img-border-class {
+  border: #2dd4bf;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+.name {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 14px;
+  margin-left: 30px;
+}
+
+.location {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 12px;
+  margin-left: 30px;
+}
+
+.btn {
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+}
